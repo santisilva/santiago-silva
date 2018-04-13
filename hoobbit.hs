@@ -38,24 +38,33 @@ cambioAnillo cambio anillos= cambio{ anillo= anillos}
 perteneceracomarcaresistencia hobit
                               | comarca hobit = ((salud hobit * estatura hobit) + fuerza hobit) 
 							  |otherwise = (salud hobit * fuerza hobit)
+
+							  
 hobitconf hobit 
                | (head.nombre) hobit == 'f' = 10
 			   | otherwise = 0
-		
-resistenciasinanillo hobit = max (perteneceracomarcaresistencia hobit + hobitconf hobit - (poderAn.anillo) hobit) 0
 
+			   
+resistenciaconanillo :: Hobbit-> Int
+resistenciaconanillo hobit = max (perteneceracomarcaresistencia hobit + hobitconf hobit - (poderAn.anillo) hobit) 0
+
+-- Comidas
 desayuno :: Hobbit-> Hobbit
 desayuno hobit = hobit{nombre = "errrp" ++ nombre hobit, salud = 5 + salud hobit}
 
+
 segundodesayuno :: Int-> Hobbit-> Hobbit
 segundodesayuno num hobit = hobit{fuerza = (4 * num) + fuerza hobit}
-
-poderdemanzanas :: Int-> Int 
-poderdemanzanas num = num * 4
 
 
 merienda :: Hobbit-> Hobbit
 merienda hobit = (desayuno.segundodesayuno 2) hobit
 
+-- Mas resistente con merienda 
+resistenciapostmerienda :: Hobbit-> Int
+resistenciapostmerienda hobit = resistenciaconanillo (merienda hobit)
 
 
+ganadorconmerienda hobit hovit
+                              |resistenciapostmerienda hobit > resistenciapostmerienda hovit = nombre hobit
+							  |otherwise = nombre hovit
