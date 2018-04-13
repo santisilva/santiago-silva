@@ -52,7 +52,8 @@ segundodesayuno num hobit = hobit{fuerza = (4 * num) + fuerza hobit}
 
 poderdemanzanas :: Int-> Int 
 poderdemanzanas num = num * 4
---holaa
+
+
 merienda :: Hobbit-> Hobbit
 merienda hobit = (desayuno.segundodesayuno 2) hobit
 
