@@ -1,7 +1,8 @@
 
 data Anillo= AnilloHobbit{
 pesoanillo:: Int,
-fraseanillo:: String
+fraseanillo:: String,
+diasllevado:: Int
 
 } deriving Show
 
@@ -12,27 +13,30 @@ estatura::Int,
 salud::Int,
 fuerza::Int,
 comarca::Bool,
-anillo::Anillo
+anillo::Anillo,
+diasllevados :: Int
 } deriving Show
 
 
 --Anillos
-anilloNoLlevadoPorNadie =AnilloHobbit 17 "Anillo invisible"
-anilloFuerte= AnilloHobbit 15 "Un anillo que sube la fuerza del hobbit"
-superAnillo= AnilloHobbit 12 "Un Anillo para gobernarlos a todos. Un Anillo para encontrarlos, un Anillo para atraerlos a todos y atarlos en las tinieblas." 
+anillonollevadopornadie =AnilloHobbit 17 "Anillo invisible" 15
+anillofuerte= AnilloHobbit 15 "Un anillo que sube la fuerza del hobbit" 20
+superanillo= AnilloHobbit 12 "Un Anillo para gobernarlos a todos. Un Anillo para encontrarlos, un Anillo para atraerlos a todos y atarlos en las tinieblas." 10 
 
 
 --Hobbits
-frodo= UnHobbit "Frodo" 106 10 50 True superAnillo 
-sam= UnHobbit "Sam"  110 12 30 False anilloFuerte
+frodo= UnHobbit "Frodo" 106 10 50 True superanillo 15 
+sam= UnHobbit "Sam"  110 12 30 False anillofuerte 15
 
 poderAn :: Anillo -> Int
 poderAn anillo = ((pesoanillo anillo) * ((length.fraseanillo) anillo))
 
 
 --CAMBIO DE ANILLOS
-cambioAnillo:: Hobbit->Anillo->Hobbit
-cambioAnillo cambio anillos= cambio{ anillo= anillos}
+--cambioAnillo:: Hobbit->Anillo-> Hobbit 
+cambioAnillo hobit otroanillo= otroanillo{diasllevado = 0}
+-- esto es asi o el cambio es no visible???
+
 
 --Comarca
 perteneceracomarcaresistencia hobit
@@ -68,3 +72,17 @@ resistenciapostmerienda hobit = resistenciaconanillo (merienda hobit)
 ganadorconmerienda hobit hovit
                               |resistenciapostmerienda hobit > resistenciapostmerienda hovit = nombre hobit
 							  |otherwise = nombre hovit
+
+							  
+-- hambre de hobit
+tienehambre:: Hobbit-> Bool
+tienehambre hobit = salud hobit < 50 && fuerza hobit > 9 || diasllevados hobit > 30
+
+-- almuerzo
+
+aumentoalmuerzo:: String -> Int -> Int
+aumentoalmuerzo nombre cantidad
+                               | head nombre == 'z' = (length nombre) * cantidad
+							   | otherwise = (length nombre) * cantidad * 2
+              
+			  
