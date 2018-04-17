@@ -82,7 +82,7 @@ tienehambre hobit = salud hobit < 50 && fuerza hobit > 9 || diasllevados hobit >
 
 aumentoalmuerzo:: String -> Int -> Int
 aumentoalmuerzo nombre cantidad
-                               | head nombre == 'z' = ((length nombre) * cantidad) "div" 2
+                               | head nombre == 'z' = div ((length nombre) * cantidad) 2
 							   | otherwise = (length nombre) * cantidad 
             
 			
