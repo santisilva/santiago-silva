@@ -1,0 +1,33 @@
+duenioDelBingo = "Perez"
+ultimaBolilla = 17
+
+jugador1::(String,[Integer])
+jugador1  = ("Juan Perez", [5, 23, 35, 17, 56, 80])
+jugador2::(String,[Integer])
+jugador2  = ("lenadro perez", [5, 23, 35, 15, 56, 80])
+jugador3::(String,[Integer])
+jugador3  = ("martin perez", [33, 23, 35, 17, 56, 80])
+jugador4::(String,[Integer])
+jugador4  = ("miguel perez", [5, 23, 35, 17, 56, 55])
+jugador5::(String,[Integer])
+jugador5  = ("pablo Pereza", [2, 23, 35, 17, 56, 80])
+
+				
+listavalida ::(String,[Integer])-> Bool				
+listavalida tupla  = minimum (snd tupla) == head (snd tupla) && maximum (snd tupla) == last (snd tupla) && length (snd tupla) == 6 
+
+
+--posibleganador ::(String,[Integer])-> String-> Int-> Bool
+--posibleganador tupla duenio ultimabola = reverse (take 5 (reverse (fst tupla))) == duenioDelBingo && elem ultimabola (snd tupla)
+
+posibleganador ::(String,[Integer])-> Bool
+posibleganador tupla = reverse (take 5 (reverse (fst tupla))) == "Perez" && elem 17 (snd tupla)
+
+ganador :: (String,[Integer])-> Bool
+ganador tupla = posibleganador tupla && listavalida tupla
+
+
+--hola = reverse (take 5 (reverse (fst jugador1)))
+
+--hola2 = length(snd jugador1)
+
