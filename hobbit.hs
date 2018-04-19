@@ -99,4 +99,4 @@ manianadeviaje :: Hobbit-> Hobbit
 manianadeviaje hobit = unamanianadeviaje (almuerzo hobit "liebres" 3) 
 
 
-
+--fin
