@@ -1,0 +1,24 @@
+mato(Asesino,Victima):-
+odia(Asesino,Victima),
+not(esMasRico(Asesino,Victima)),
+vive(Asesino,dreadbury).
+
+odia(charles,Alguien):- 
+vive(Alguien,dreadbury),
+not(odia(agatha,Alguien)).
+
+odia(agatha,Alguien):-
+vive(Alguien,dreadbury),
+Alguien \= carnicero.
+
+odia(carnicero,Alguien) :- odia(agatha,Alguien).
+
+esMasRico(Alguien,agatha):-
+not(odia(carnicero,Alguien)),
+vive(Alguien,dreadbury).
+
+
+
+vive(agatha,dreadbury).
+vive(carnicero,dreadbury).
+vive(charles,dreadbury).
